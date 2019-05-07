@@ -6,17 +6,30 @@
   <title>TEXT: Whakatane Live</title>
   <style type="text/css">
     @import url('https://fonts.googleapis.com/css?family=Fugaz+One');
+    @import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,700');
 
-    .logo_container {
-      font-family: 'Fugaz One', cursive;
+    body {
+      font-family: 'Fira Mono', monospace;
+      font-weight: bold;
+    }
+
+    #overlay {
       background-color: rgba(50, 50, 50, 0.8);
-      padding: 0 0 0 120px;
+      padding: 0 18px 0 120px;
       -webkit-border-radius: 55px 5px 5px 55px;
       -moz-border-radius: 55px 5px 5px 55px;
       border-radius: 55px 5px 5px 55px;
       position: relative;
       height: 103px;
-      width: 120px;
+      width: 156px;
+    }
+
+    .info_container {
+      text-align: right;
+    }
+
+    .logo_container {
+      
     }
 
     .text {
@@ -33,33 +46,49 @@
       top: -8px;
     }
 
-    .weather, .date {
+    .weather {
       padding: 16px 0 0 0;
-      display: inline-block;
-      margin: 0 0 0 12px;
     }
 
-    .weather div, .date div {
+    .weather, .time {
+      width: 100%;
+      float: left;
+      margin: 0 0 0 0px;
+      display: inline-block;
+    }
+
+    .weather div {
+      display: inline-block
+    }
+
+    .weather div, .time div {
       padding: 0 0 10px 0;
     }
 
-    .date {
-      margin: 0 0 0 120px;
+    .time {
     }
   </style>
 </head>
 
 <body>
 
-  <div class="logo_container">
-    <img class="whklive_circle" src="whklive_circle.png" />
-    <!-- <div class="date">
-        <div class="text">NOW 19°</div>
-        <div class="text">24 JAN</div>
-    </div> -->
-    <div class="weather">
+  <div id="overlay">
+    <div class="logo_container">
+      <img class="whklive_circle" src="whklive_circle.png" />
+    </div>
+  
+    <div class="info_container">
+      <!-- <div class="date">
+          <div class="text">NOW 19°</div>
+          <div class="text">24 JAN</div>
+      </div> -->
+      <div class="weather">
         <div class="text" id="temp_max">N/A</div>
         <div class="text" id="temp_min">N/A</div>
+      </div>
+      <div class="time">
+          <div class="text" id="time">N/A</div>
+      </div>
     </div>
   </div>
 
