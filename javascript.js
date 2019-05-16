@@ -1,7 +1,7 @@
 (function ($) {
     "use strict"; // Start of use strict
-    
-    (function getTemperatures() {
+
+    function getTemperatures() {
 
         function populateWeatherPanel(temp_max, temp_min) {
             $('#temp_max').text("H" + temp_max + "°");
@@ -20,30 +20,38 @@
             dataType: "jsonp"
         });
 
-    })();
-    "use strict"; // Start of use strict
+    }
 
-    (function getTime() {
+    getTemperatures();
 
-        function startTime() {
+    function startTimeUpdateLoop() {
+
+        function checkAndAddAnExtraZeroToTheBeginningOfAOneDigitNumber(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+
+        function timeUpdateLoop() {
             var today = new Date();
             var h = today.getHours();
             var m = today.getMinutes();
             var s = today.getSeconds();
             // h = checkTime(h);
-            m = checkTime(m);
-            s = checkTime(s);
+
+            m = checkAndAddAnExtraZeroToTheBeginningOfAOneDigitNumber(m);
+            s = checkAndAddAnExtraZeroToTheBeginningOfAOneDigitNumber(s);
+
             var time_now = h + ":" + m + ":" + s;
+
             $('#time').text(time_now);
-            var t = setTimeout(startTime, 1000);
-        }
-        function checkTime(i) {
-            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-            return i;
+
+            setTimeout(timeUpdateLoop, 1000);
         }
 
-        startTime();
+        timeUpdateLoop();
 
-    })();
+    }
+
+    startTimeUpdateLoop();
 
 })(jQuery); // End of use strict
